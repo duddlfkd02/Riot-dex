@@ -1,4 +1,5 @@
 import { fetchChampionList } from "@/utils/serverApi";
+import Image from "next/image";
 
 export default async function ChampionsPage() {
   const champions = await fetchChampionList();
@@ -20,8 +21,8 @@ export default async function ChampionsPage() {
               padding: "10px",
             }}
           >
-            <img
-              src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`}
+            <Image
+              src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${champion.id}.png`}
               alt={champion.name}
               width={100}
               height={100}
