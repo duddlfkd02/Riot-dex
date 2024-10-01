@@ -8,6 +8,10 @@ export type Champion = {
   blurb: string;
   tags: string[];
   partype: string;
+  info: ChampionInfoType;
+  image: ChampionImage;
+  stats: ChampionStats;
+  skins: Skin[];
 };
 
 // 챔피언의 인포
@@ -53,33 +57,15 @@ export type ChampionStats = {
   attackspeed: number;
 };
 
-// 스킨과 아이템 정보
-export type ChampionDetail = {
-  skins: Skin[];
-  items: Item[];
+// 스킨 타입
+export type Skin = {
+  id: string;
+  num: number;
+  name: string;
+  chromas: boolean;
 };
 
-interface Skin {
-  id: string;
-  num: number;
-  name: string;
-  chromas: boolean;
-}
-
-interface Item {
-  id: string;
-  num: number;
-  name: string;
-  chromas: boolean;
-}
-
-// 모든 데이터
+// 전체 챔피언 데이터 타입
 export type ChampionData = {
-  [key: string]: {
-    champion: Champion;
-    info: ChampionInfoType;
-    image: ChampionImage;
-    stats: ChampionStats;
-    details: ChampionDetail;
-  };
+  [id: string]: Champion;
 };
