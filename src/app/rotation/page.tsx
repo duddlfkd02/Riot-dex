@@ -71,7 +71,7 @@ export default function ChampionRotationPage() {
           return (
             <Link
               key={champion.id}
-              href={`/champion/${name}`} //TODO 추후 링크 변경하기
+              href={`/champions/${champion.id}`}
               className="border rounded p-4 hover:shadow-lg"
             >
               <Image

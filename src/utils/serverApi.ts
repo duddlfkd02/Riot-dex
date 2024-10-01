@@ -1,6 +1,6 @@
-import { ChampionData } from "@/types/Champion";
+import { ChampionData, Champion } from "@/types/Champion";
 
-export async function fetchChampionList() {
+export async function fetchChampionList(): Promise<ChampionData | null> {
   try {
     const versionResponse = await fetch(
       "https://ddragon.leagueoflegends.com/api/versions.json"
@@ -19,7 +19,9 @@ export async function fetchChampionList() {
   }
 }
 
-export async function fetchChampionDetail(id: string) {
+export async function fetchChampionDetail(
+  id: string
+): Promise<Champion | null> {
   try {
     const versionResponse = await fetch(
       "https://ddragon.leagueoflegends.com/api/versions.json"
