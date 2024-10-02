@@ -37,6 +37,7 @@ export default async function ChampionsPage() {
   }
 
   const champions: ChampionProps[] = Object.entries(championData).map(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ([id, champion]) => ({
       id: champion.id,
       name: champion.name,

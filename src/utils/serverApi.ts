@@ -1,4 +1,5 @@
 import { ChampionData, Champion } from "@/types/Champion";
+import { ItemData } from "@/types/Items";
 
 export async function fetchChampionList(): Promise<ChampionData | null> {
   try {
@@ -40,7 +41,7 @@ export async function fetchChampionDetail(
   }
 }
 
-export async function fetchItemList() {
+export async function fetchItemList(): Promise<ItemData | null> {
   try {
     const versionResponse = await fetch(
       "https://ddragon.leagueoflegends.com/api/versions.json"
