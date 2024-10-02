@@ -32,12 +32,12 @@ export default async function ItemDetailPage({ params }: ItemDetailProps) {
       />
       <p>{item.plaintext}</p>
 
-      <h3>Golds</h3>
+      <h3>골드</h3>
       <ul>
-        <li>Base: {item.gold.base}</li>
-        <li>Purchasable: {item.gold.purchasable ? "Yes" : "No"}</li>
-        <li>Total: {item.gold.total}</li>
-        <li>Sell: {item.gold.sell}</li>
+        <li>베이스: {item.gold.base}</li>
+        <li>구매가능 여부: {item.gold.purchasable ? "가능" : "불가능"}</li>
+        <li>합계: {item.gold.total}</li>
+        <li>판매가격: {item.gold.sell}</li>
       </ul>
     </div>
   );
