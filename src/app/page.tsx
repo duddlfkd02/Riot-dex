@@ -21,17 +21,11 @@ export default async function Home() {
     })
   );
 
-  // 각각 다른 랜덤 챔피언 선택
-  const randomChampion1 =
-    champions[Math.floor(Math.random() * champions.length)];
-  const randomChampion2 =
-    champions[Math.floor(Math.random() * champions.length)];
-  const randomChampion3 =
-    champions[Math.floor(Math.random() * champions.length)];
-
-  const imageUrl1 = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${randomChampion1.id}_0.jpg`;
-  const imageUrl2 = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${randomChampion2.id}_0.jpg`;
-  const imageUrl3 = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${randomChampion3.id}_0.jpg`;
+  const getRandomImageUrl = (champions: ChampionData[]) => {
+    const randaomChampion =
+      champions[Math.floor(Math.random() * champions.length)];
+    return `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${randaomChampion.id}_0.jpg`;
+  };
 
   return (
     <div className="flex flex-col gap-5 justify-center items-center text-center">
@@ -42,8 +36,8 @@ export default async function Home() {
         <Link href={"/champions"}>
           <div>
             <Image
-              src={imageUrl1}
-              alt={randomChampion1.name}
+              src={getRandomImageUrl(champions)}
+              alt="Random Champion"
               width={500}
               height={500}
             />
@@ -54,8 +48,8 @@ export default async function Home() {
         <Link href={"/items"}>
           <div>
             <Image
-              src={imageUrl2}
-              alt={randomChampion2.name}
+              src={getRandomImageUrl(champions)}
+              alt="Random Champion 3"
               width={500}
               height={500}
             />
@@ -65,8 +59,8 @@ export default async function Home() {
         <Link href={"/rotation"}>
           <div>
             <Image
-              src={imageUrl3}
-              alt={randomChampion3.name}
+              src={getRandomImageUrl(champions)}
+              alt="Random Champion 3"
               width={500}
               height={500}
             />
@@ -78,4 +72,5 @@ export default async function Home() {
   );
 }
 
+// export const revalidate = 5;
 export const revalidate = 86400;
