@@ -1,3 +1,4 @@
+import { Golds } from "@/types/Items";
 import { fetchItemList } from "@/utils/serverApi";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +8,8 @@ type ItemsProps = {
   description: string;
   colloq: string;
   plaintext: string;
+  gold: Golds;
+  tags: string[];
   image: { full: string };
 };
 
@@ -33,14 +36,17 @@ export default async function ItemPage() {
   if (!itemData) {
     return <div>아이템 목록을 불러오는 중 오류가 발생했습니다.</div>;
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  //eslint-disable-next-line @typescript-eslint/no-unused-vars
   const items: ItemsProps[] = Object.entries(itemData).map(([id, item]) => ({
     name: item.name,
     description: item.description,
     colloq: item.colloq,
     plaintext: item.plaintext,
     image: item.image,
+    gold: item.gold,
+    tags: item.tags,
   }));
+
   return (
     <div>
       <h1>아이템 목록</h1>

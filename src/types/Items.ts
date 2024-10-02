@@ -1,3 +1,10 @@
+export type Golds = {
+  base: number;
+  purchasable: boolean;
+  total: number;
+  sell: number;
+};
+
 export type Item = {
   name: string;
   description: string;
@@ -13,12 +20,7 @@ export type Item = {
     w: number;
     h: number;
   };
-  gold: {
-    base: number;
-    purchasable: boolean;
-    total: number;
-    sell: number;
-  };
+  gold: Golds;
   tags: string[];
   maps: {
     [key: number]: boolean;
