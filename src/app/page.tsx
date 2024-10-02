@@ -14,6 +14,7 @@ export default async function Home() {
     return <div>챔피언 목록을 불러오는 중 오류가 발생했습니다.</div>;
   }
 
+  // 랜덤 이미지를 빌드 시점에 한 번 선택
   const champions: ChampionData[] = Object.values(championsData).map(
     (champion) => ({
       id: champion.id,
@@ -22,10 +23,15 @@ export default async function Home() {
   );
 
   const getRandomImageUrl = (champions: ChampionData[]) => {
-    const randaomChampion =
+    const randomChampion =
       champions[Math.floor(Math.random() * champions.length)];
-    return `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${randaomChampion.id}_0.jpg`;
+    return `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${randomChampion.id}_0.jpg`;
   };
+
+  // 빌드 시점에 고정된 이미지 URL 생성
+  const randomImageUrl1 = getRandomImageUrl(champions);
+  const randomImageUrl2 = getRandomImageUrl(champions);
+  const randomImageUrl3 = getRandomImageUrl(champions);
 
   return (
     <div className="flex flex-col gap-5 justify-center items-center text-center">
@@ -36,7 +42,7 @@ export default async function Home() {
         <Link href={"/champions"}>
           <div>
             <Image
-              src={getRandomImageUrl(champions)}
+              src={randomImageUrl1}
               alt="Random Champion"
               width={500}
               height={500}
@@ -48,7 +54,7 @@ export default async function Home() {
         <Link href={"/items"}>
           <div>
             <Image
-              src={getRandomImageUrl(champions)}
+              src={randomImageUrl2}
               alt="Random Champion 3"
               width={500}
               height={500}
@@ -59,7 +65,7 @@ export default async function Home() {
         <Link href={"/rotation"}>
           <div>
             <Image
-              src={getRandomImageUrl(champions)}
+              src={randomImageUrl3}
               alt="Random Champion 3"
               width={500}
               height={500}
@@ -72,5 +78,4 @@ export default async function Home() {
   );
 }
 
-// export const revalidate = 5;
-export const revalidate = 86400;
+export const revalidate = false;
