@@ -40,9 +40,9 @@ export default async function Home() {
         Riot Games API를 활용하여 챔피언과 아이템 정보를 제공합니다.
       </p>
 
-      <div className="flex flex-col gap-6 items-center">
+      <div className="flex flex-col gap-6 items-center md:mx-4">
         <Link href={"/champions"}>
-          <div className="card-base">
+          <div className="card-base md:max-w-md">
             <Image
               src={randomImageUrl1}
               alt="Random Champion"
@@ -56,7 +56,7 @@ export default async function Home() {
         </Link>
 
         <Link href={"/items"}>
-          <div className="card-base">
+          <div className="card-base md:max-w-md">
             <Image
               src={randomImageUrl2}
               alt="Random Champion 3"
@@ -69,7 +69,7 @@ export default async function Home() {
           </div>
         </Link>
         <Link href={"/rotation"}>
-          <div className="card-base">
+          <div className="card-base md:max-w-md">
             <Image
               src={randomImageUrl3}
               alt="Random Champion 3"

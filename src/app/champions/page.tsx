@@ -16,14 +16,21 @@ type ChampionProps = {
 const ChampionCard = ({ champion }: { champion: ChampionProps }) => {
   return (
     <Link href={`/champions/${champion.id}`}>
-      <Image
-        src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${champion.id}.png`}
-        alt={champion.name}
-        width={100}
-        height={100}
-      />
-      <h2>{champion.name}</h2>
-      <p>{champion.title}</p>
+      <div className=" rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 ease-in-out p-4 text-center">
+        <Image
+          src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${champion.id}.png`}
+          alt={champion.name}
+          width={100}
+          height={100}
+          className="object-cover mx-auto hover:shadow-purple-100/20 hover:shadow-2xl"
+        />
+        <h2 className="text-md font-semibold text-purple-500 truncate mt-5">
+          {champion.name}
+        </h2>
+        <p className="text-sm text-gray-400 break-words mt-4">
+          {champion.title}
+        </p>
+      </div>
     </Link>
   );
 };
@@ -49,9 +56,9 @@ export default async function ChampionsPage() {
   );
 
   return (
-    <div>
-      <h1>챔피언 목록</h1>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <div className="flex flex-col justify-center items-center gap-6  bg-gray-950 min-h-screen">
+      <h1 className="main-title">챔피언 목록</h1>
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mt-4">
         {champions.map((champion) => (
           <ChampionCard key={champion.id} champion={champion} />
         ))}

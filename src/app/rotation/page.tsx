@@ -56,9 +56,9 @@ export default function ChampionRotationPage() {
   }
 
   return (
-    <div className="bg-black text-red-500">
-      <h1 className="text-3xl font-bold mb-4">챔피언 로테이션</h1>
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+    <div className="flex flex-col justify-center items-center gap-6  bg-gray-950 min-h-screen">
+      <h1 className="main-title">챔피언 로테이션</h1>
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 mt-4 ">
         {rotation.map((id) => {
           const champion = Object.values(champions).find((champion) => {
             return champion.key === id.toString();
@@ -72,17 +72,24 @@ export default function ChampionRotationPage() {
             <Link
               key={champion.id}
               href={`/champions/${champion.id}`}
-              className="border rounded p-4 hover:shadow-lg"
+              className="text-center"
             >
-              <Image
-                src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${champion.id}.png`}
-                alt={champion.name}
-                width={100}
-                height={100}
-                className="mx-auto"
-              />
-              <h3 className="mt-2 text-xl font-semibold">{champion.name}</h3>
-              <p className="text-gray-500">{champion.title}</p>
+              <div className=" rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 ease-in-out p-4 text-center">
+                <Image
+                  src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${champion.id}.png`}
+                  alt={champion.name}
+                  width={100}
+                  height={100}
+                  className="object-cover mx-auto hover:shadow-purple-100/20 hover:shadow-2xl"
+                />
+
+                <h3 className="text-md font-semibold text-purple-500 truncate mt-5">
+                  {champion.name}
+                </h3>
+                <p className="text-sm text-gray-400 break-words mt-4">
+                  {champion.title}
+                </p>
+              </div>
             </Link>
           );
         })}
