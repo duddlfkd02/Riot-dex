@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "../styles/reset.css";
 import Link from "next/link";
+import localFont from "next/font/local";
+
+const Koddi = localFont({
+  src: "../public/fonts/KoddiUDOnGothic-Regular.woff2",
+  display: "swap",
+  variable: "--font-Koddi",
+});
 
 export const metadata: Metadata = {
   title: "Riot Dex",
@@ -14,9 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" className={Koddi.className}>
       <body>
-        <header className="bg-gray-900 text-white p-7 fixed top-0 w-full h-16 z-10">
+        <header className="bg-gray-900 text-white p-6 fixed top-0 w-full h-16 z-10">
           <nav className="flex justify-end gap-4">
             <Link href={"/"} className="hover:text-purple-500 transition-all ">
               홈

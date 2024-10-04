@@ -36,7 +36,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col gap-8 justify-center items-center text-center bg-gray-950 min-h-screen py-10">
       <h1 className="main-title">리그 오브 레전드 정보 앱</h1>
-      <p className="text-md text-gray-500">
+      <p className="text-sm text-gray-500 md:text-lg">
         Riot Games API를 활용하여 챔피언과 아이템 정보를 제공합니다.
       </p>
 
