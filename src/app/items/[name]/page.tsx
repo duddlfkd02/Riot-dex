@@ -1,9 +1,38 @@
 import { fetchItemList } from "@/utils/serverApi";
+import { Metadata } from "next";
 import Image from "next/image";
 
 type ItemDetailProps = {
   params: { name: string };
 };
+
+export async function generateMetadata({
+  params,
+}: ItemDetailProps): Promise<Metadata> {
+  const itemData = await fetchItemList(); // 전체 아이템 목록 가져오기
+
+  if (!itemData) {
+    return {
+      title: "아이템을 찾을 수 없습니다.",
+    };
+  }
+
+  // 아이템 목록에서 params.name과 일치하는 아이템 찾기
+  const item = Object.values(itemData).find(
+    (i) => i.name === decodeURIComponent(params.name)
+  );
+
+  if (!item) {
+    return {
+      title: "아이템을 찾을 수 없습니다.",
+    };
+  }
+
+  return {
+    title: `${item.name}`,
+    description: item.plaintext || "아이템 설명이 없습니다.",
+  };
+}
 
 export default async function ItemDetailPage({ params }: ItemDetailProps) {
   const decodedName = decodeURIComponent(params.name);

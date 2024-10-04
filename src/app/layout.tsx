@@ -4,8 +4,8 @@ import "../styles/reset.css";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "롤 과제",
-  description: "롤 과제",
+  title: "Riot Dex",
+  description: "리그 오브 레전드 정보 앱",
 };
 
 export default function RootLayout({
