@@ -66,4 +66,3 @@ export default async function ChampionsPage() {
     </div>
   );
 }
-export const revalidate = 86400;

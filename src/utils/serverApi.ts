@@ -1,10 +1,13 @@
+"use server";
+
 import { ChampionData, Champion } from "@/types/Champion";
 import { ItemData } from "@/types/Items";
 
 export async function fetchChampionList(): Promise<ChampionData | null> {
   try {
     const versionResponse = await fetch(
-      "https://ddragon.leagueoflegends.com/api/versions.json"
+      "https://ddragon.leagueoflegends.com/api/versions.json",
+      { next: { revalidate: 86400 } }
     );
     const versions = await versionResponse.json();
     const latestVersion = versions[0];
@@ -31,7 +34,8 @@ export async function fetchChampionDetail(
     const latestVersion = versions[0];
 
     const championDetailResponse = await fetch(
-      `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/ko_KR/champion/${id}.json`
+      `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/ko_KR/champion/${id}.json`,
+      { next: { revalidate: 86400 } }
     );
     const championDetailData = await championDetailResponse.json();
     return championDetailData.data[id];
