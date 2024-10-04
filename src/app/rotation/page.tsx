@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { getChampionRotation } from "@/utils/riotApi";
 import { fetchChampionList } from "@/utils/serverApi"; // 챔피언 목록
 import Link from "next/link";
+import Image from "next/image";
 
 type ChampionData = {
   id: string;
