@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { getChampionRotation } from "@/utils/riotApi";
-import { fetchChampionList } from "@/utils/serverApi"; // 챔피언 목록
-import Link from "next/link";
-import Image from "next/image";
+import { fetchChampionList } from "@/utils/serverApi";
+import { RotationCard } from "@/components/RotationCard";
 
 type ChampionData = {
   id: string;
@@ -15,31 +14,31 @@ type ChampionData = {
 };
 
 export default function ChampionRotationPage() {
-  const [rotation, setRotation] = useState<number[]>([]); // id , 배열로 담기
+  const [rotation, setRotation] = useState<number[]>([]);
   const [champions, setChampions] = useState<{
     [key: string]: ChampionData;
   } | null>(null);
-  // 챔피언 목록
-
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const rotationData = await getChampionRotation();
-        setRotation(rotationData.freeChampionIds);
+  const fetchData = async () => {
+    try {
+      const [rotationData, championData] = await Promise.all([
+        getChampionRotation(),
+        fetchChampionList(),
+      ]);
 
-        const championData = await fetchChampionList();
-        setChampions(championData);
-      } catch (error) {
-        console.error("Fetch Error:", error);
-        setError("로테이션 데이터를 가져오는 중 문제가 발생했습니다.");
-      } finally {
-        setLoading(false);
-      }
+      setRotation(rotationData.freeChampionIds || []);
+      setChampions(championData || {});
+    } catch (error) {
+      console.error("Fetch Error:", error);
+      setError("로테이션 데이터를 가져오는 중 문제가 발생했습니다.");
+    } finally {
+      setLoading(false);
     }
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -68,30 +67,7 @@ export default function ChampionRotationPage() {
             return null;
           }
 
-          return (
-            <Link
-              key={champion.id}
-              href={`/champions/${champion.id}`}
-              className="text-center"
-            >
-              <div className=" rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 ease-in-out p-4 text-center">
-                <Image
-                  src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${champion.id}.png`}
-                  alt={champion.name}
-                  width={100}
-                  height={100}
-                  className="object-cover mx-auto hover:shadow-purple-100/20 hover:shadow-2xl"
-                />
-
-                <h3 className="text-md font-semibold text-purple-500 truncate mt-5">
-                  {champion.name}
-                </h3>
-                <p className="text-sm text-gray-400 break-words mt-4">
-                  {champion.title}
-                </p>
-              </div>
-            </Link>
-          );
+          return <RotationCard key={champion.id} champion={champion} />;
         })}
       </div>
     </div>
