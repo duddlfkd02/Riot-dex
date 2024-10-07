@@ -5,7 +5,7 @@ import Link from "next/link";
 import localFont from "next/font/local";
 
 const Koddi = localFont({
-  src: "../public/fonts/KoddiUDOnGothic-Regular.woff2",
+  src: "../app/fonts/KoddiUDOnGothic-Regular.woff2",
   display: "swap",
   variable: "--font-Koddi",
 });

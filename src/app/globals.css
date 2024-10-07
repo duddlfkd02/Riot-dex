@@ -4,7 +4,11 @@
 
 /* global.css */
 body {
+  cursor: url("/normal.cur"), auto;
   @apply bg-gray-950;
+}
+a {
+  cursor: url("/link.cur"), pointer;
 }
 
 .card-base {
