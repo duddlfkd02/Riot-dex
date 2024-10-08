@@ -9,7 +9,7 @@ type ItemDetailProps = {
 export async function generateMetadata({
   params,
 }: ItemDetailProps): Promise<Metadata> {
-  const itemData = await fetchItemList(); // 전체 아이템 목록 가져오기
+  const itemData = await fetchItemList();
 
   if (!itemData) {
     return {

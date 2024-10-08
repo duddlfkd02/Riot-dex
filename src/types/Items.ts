@@ -10,7 +10,6 @@ export type Item = {
   description: string;
   colloq: string;
   plaintext: string;
-  into: string[];
   image: {
     full: string;
     sprite: string;
@@ -22,12 +21,6 @@ export type Item = {
   };
   gold: Golds;
   tags: string[];
-  maps: {
-    [key: number]: boolean;
-  };
-  stats: {
-    [key: string]: number;
-  };
 };
 
 // 아이템 데이터 전체

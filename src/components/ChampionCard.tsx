@@ -1,15 +1,18 @@
-import { ChampionInfoType } from "@/types/Champion";
+import { Champion } from "@/types/Champion";
 import Link from "next/link";
 import Image from "next/image";
 
-type ChampionProps = {
-  id: string;
-  name: string;
-  title: string;
-  blurb: string;
-  image: { full: string };
-  info: ChampionInfoType;
-};
+// type ChampionProps = {
+//   id: string;
+//   name: string;
+//   title: string;
+//   blurb: string;
+//   image: { full: string };
+//   info: ChampionInfoType;
+// };
+
+type ChampionProps = Omit<Champion, "stats" | "key">;
+
 // 카드 컴포넌트
 export const ChampionCard = ({ champion }: { champion: ChampionProps }) => {
   return (

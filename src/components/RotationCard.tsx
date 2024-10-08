@@ -1,13 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Champion } from "@/types/Champion";
 
-type ChampionData = {
-  id: string;
-  key: string;
-  title: string;
-  name: string;
-  image: { full: string };
-};
+type ChampionData = Champion;
 
 export const RotationCard = ({ champion }: { champion: ChampionData }) => {
   return (

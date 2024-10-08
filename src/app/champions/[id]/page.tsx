@@ -1,7 +1,6 @@
 import { fetchChampionDetail } from "@/utils/serverApi";
 import Image from "next/image";
 import { Metadata } from "next";
-import React from "react";
 
 type ChampionDetailProps = {
   params: { id: string };

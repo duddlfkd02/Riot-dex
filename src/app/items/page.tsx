@@ -1,16 +1,8 @@
-import { Golds } from "@/types/Items";
 import { fetchItemList } from "@/utils/serverApi";
 import { ItemCard } from "@/components/ItemCard";
+import { Item } from "@/types/Items";
 
-type ItemsProps = {
-  name: string;
-  description: string;
-  colloq: string;
-  plaintext: string;
-  gold: Golds;
-  tags: string[];
-  image: { full: string };
-};
+type ItemsProps = Item;
 
 export default async function ItemPage() {
   const itemData = await fetchItemList();

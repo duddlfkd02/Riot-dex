@@ -73,7 +73,7 @@
 
 🚨 참고사항
 
-- 본 페이지는 `Riot`의 `api key`가 필요합니다. 코드를 `clone` 하여 로컬에서 보실 경우 [Riot 사이트](https://developer.riotgames.com/apis) 에서 고유 `api key`를 발급받으시길 바랍니다. (파일 내 `.env.sammple`에 복사 붙여넣기 하시면 됩니다.)
+- 본 페이지는 `Riot`의 `api key`가 필요합니다. 코드를 `clone` 하여 로컬에서 보실 경우 [Riot 사이트](https://developer.riotgames.com/apis) 에서 고유 `api key`를 발급받으시길 바랍니다. (파일 내 `.env.sample`에 복사 붙여넣기 하시면 됩니다.)
 - 페이지 링크를 통해 구경하실 때 로딩이 안 되는 경우, 개인 `api key`는 24시간 동안만 제공되어 만료 이슈가 있을 수 있습니다. 연락주시면 빠른 시일 내에 업데이트 하겠습니다.
 
   <br>

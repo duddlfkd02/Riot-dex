@@ -5,19 +5,11 @@ import { getChampionRotation } from "@/utils/riotApi";
 import { fetchChampionList } from "@/utils/serverApi";
 import { RotationCard } from "@/components/RotationCard";
 
-type ChampionData = {
-  id: string;
-  key: string;
-  title: string;
-  name: string;
-  image: { full: string };
-};
+import { ChampionData } from "@/types/Champion";
 
 export default function ChampionRotationPage() {
   const [rotation, setRotation] = useState<number[]>([]);
-  const [champions, setChampions] = useState<{
-    [key: string]: ChampionData;
-  } | null>(null);
+  const [champions, setChampions] = useState<ChampionData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 

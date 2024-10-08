@@ -1,15 +1,8 @@
 import { fetchChampionList } from "@/utils/serverApi";
-import { ChampionInfoType } from "@/types/Champion";
 import { ChampionCard } from "@/components/ChampionCard";
+import { Champion } from "@/types/Champion";
 
-type ChampionProps = {
-  id: string;
-  name: string;
-  title: string;
-  blurb: string;
-  image: { full: string };
-  info: ChampionInfoType;
-};
+type ChampionProps = Omit<Champion, "key" | "stats">;
 
 //목록 보여지는 곳
 export default async function ChampionsPage() {
